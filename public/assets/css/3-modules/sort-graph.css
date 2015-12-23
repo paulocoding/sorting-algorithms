@@ -1,0 +1,17 @@
+.sort {
+  display: block;
+  padding: 0;
+  background-color: #c4daff;
+  width: 400px;
+  height: 100px;
+  margin: 0; }
+
+.bar {
+  display: inline-block;
+  position: relative;
+  bottom: 0;
+  height: 20px;
+  width: 2px;
+  background-color: #48d;
+  margin: 0 1px;
+  padding: 0; }

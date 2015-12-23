@@ -1,13 +1,12 @@
 var main = function() {
 	var list = [];
-	for (var i=0;i<40;i++) {
+	for (var i=0;i<100;i++) {
 		list.push(Math.floor(Math.random()*101));
 	}
-	console.log(list);
 	var originalList = list.slice();
+	drawList('orig-list', originalList);
 	selSort(list);
-	console.log(list);
-	console.log(originalList);
+	drawList('sel-sort', list);
 };
 // end of main function
 
