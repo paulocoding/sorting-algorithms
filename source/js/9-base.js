@@ -4,9 +4,13 @@ var main = function() {
 		list.push(Math.floor(Math.random()*101));
 	}
 	var originalList = list.slice();
+	var selList = list.slice();
+	var bbList = list.slice();
 	drawList('orig-list', originalList);
-	selSort(list);
-	drawList('sel-sort', list);
+	selSort(selList);
+	bubbleSort(bbList);
+	drawList('sel-sort', selList);
+	drawList('bb-sort', bbList);
 };
 // end of main function
 
