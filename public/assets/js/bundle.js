@@ -42,6 +42,38 @@ var bubbleSort = function(list) {
 		}
 	}
 }
+
+// merge sort
+var mergeSort = function(list){
+	var l = list.length;
+	if(l>1){
+		var pivot = Math.ceil(l/2);
+		var left = mergeSort(list.slice(0,pivot));
+		var right = mergeSort(list.slice(pivot,l));
+		var newlist = [];
+		do {
+			// pushing lower number
+			if(left[0]<right[0]){
+				newlist.push(left.shift());
+			} else {
+				newlist.push(right.shift());
+			}
+		} while(left.length && right.length);
+		
+		if(left.length > 0){
+			do{
+				newlist.push(left.shift());
+			}while(left.length);
+		} else {
+			do{
+				newlist.push(right.shift());
+			}while(right.length);			
+		}
+		return newlist;
+	}else{	
+		return list;
+	}
+}
 var main = function() {
 	var list = [];
 	for (var i=0;i<100;i++) {
@@ -50,11 +82,14 @@ var main = function() {
 	var originalList = list.slice();
 	var selList = list.slice();
 	var bbList = list.slice();
+	var mList = list.slice();
 	drawList('orig-list', originalList);
 	selSort(selList);
 	bubbleSort(bbList);
+	mList = mergeSort(mList);
 	drawList('sel-sort', selList);
 	drawList('bb-sort', bbList);
+	drawList('merge-sort', mList);
 };
 // end of main function
 
