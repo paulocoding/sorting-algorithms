@@ -28,7 +28,7 @@ var selSort = function(list) {
 // bubble sort
 var bubbleSort = function(list) {
 	var swapped = true;
-	var swap ;
+	var swap;
 	for(var i=0, l=list.length; i<l && swapped; i++){
 		swapped=false;
 		for(var j=l-1; j>i; j--){
@@ -70,7 +70,34 @@ var mergeSort = function(list){
 			}while(right.length);			
 		}
 		return newlist;
-	}else{	
+	}else{
+		return list;
+	}
+}
+
+// quick sort
+// recusive 
+var quickSort = function(list){
+	if(list.length >1)
+	{
+		// selecting pivot
+		var pivot = list[0];
+		var l = [];
+		var r = [];
+		for(var i = 1, lgt = list.length; i<lgt; i++) {
+			if(list[i]<list[pivot]) {
+				l.push(list[i]);	
+			} else {
+				r.push(list[i]);
+			}
+		}
+		l=mergeSort(l);
+		r=mergeSort(r);
+		l.push(list[pivot]);
+		var newList = l.concat(r);
+		return newList;
+	}
+	else{
 		return list;
 	}
 }
@@ -83,13 +110,16 @@ var main = function() {
 	var selList = list.slice();
 	var bbList = list.slice();
 	var mList = list.slice();
+	var qList = list.slice();
 	drawList('orig-list', originalList);
 	selSort(selList);
 	bubbleSort(bbList);
 	mList = mergeSort(mList);
+	qList = quickSort(qList);
 	drawList('sel-sort', selList);
 	drawList('bb-sort', bbList);
 	drawList('merge-sort', mList);
+	drawList('quick-sort', qList);
 };
 // end of main function
 
