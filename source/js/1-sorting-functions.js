@@ -91,3 +91,25 @@ var quickSort = function(list){
 		return list;
 	}
 }
+
+// counting sort 
+var countingSort = function(list, min, max){
+	var countList = [];
+	var newList = [];
+	for(var i = 0, l = max+1 - min; i<l; i++){
+		countList.push(0);
+	}
+	for(var i = 0, l=list.length;i<l;i++){
+		countList[list[min+i]]++;
+	}
+	
+	
+	for(var i = 0, l = max+1 - min; i<l; i++){
+		while(countList[min+i]){
+			newList.push(i);
+			countList[min+i]--;
+		}
+	}
+	
+	return newList;
+}
