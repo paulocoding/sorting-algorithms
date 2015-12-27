@@ -85,15 +85,15 @@ var quickSort = function(list){
 		var l = [];
 		var r = [];
 		for(var i = 1, lgt = list.length; i<lgt; i++) {
-			if(list[i]<list[pivot]) {
+			if(list[i]<pivot) {
 				l.push(list[i]);	
 			} else {
 				r.push(list[i]);
 			}
 		}
-		l=mergeSort(l);
-		r=mergeSort(r);
-		l.push(list[pivot]);
+		l=quickSort(l);
+		r=quickSort(r);
+		l.push(pivot);
 		var newList = l.concat(r);
 		return newList;
 	}
